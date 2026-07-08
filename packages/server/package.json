@@ -1,0 +1,18 @@
+{
+  "name": "@fiber-merchant-toolkit/server",
+  "version": "0.1.0",
+  "description": "Thin Express wrapper over @fiber-merchant-toolkit/core exposing invoice/receipt/export endpoints.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@fiber-merchant-toolkit/core": "^0.1.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

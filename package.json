@@ -1,0 +1,23 @@
+{
+  "name": "fiber-merchant-toolkit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Post-payment merchant tooling for RUSD payments over the Fiber Network (CKB Lightning-style payment channels).",
+  "workspaces": [
+    "packages/core",
+    "packages/server",
+    "packages/web"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "test:core": "npm run test --workspace=packages/core",
+    "test:server": "npm run test --workspace=packages/server",
+    "test:web": "npm run test --workspace=packages/web"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

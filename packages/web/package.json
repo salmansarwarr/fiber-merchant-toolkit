@@ -1,0 +1,16 @@
+{
+  "name": "@fiber-merchant-toolkit/web",
+  "version": "0.1.0",
+  "description": "Static frontend (plain HTML/fetch, no framework) for invoice creation, receipt polling, and settlement export.",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}

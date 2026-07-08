@@ -1,0 +1,17 @@
+{
+  "name": "@fiber-merchant-toolkit/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable Fiber Network merchant toolkit primitives (RPC client, amounts, invoices, receipts, settlement) — no HTTP concerns.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5",
+    "pdfkit": "^0.19.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
