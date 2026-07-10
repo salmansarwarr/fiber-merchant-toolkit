@@ -1,7 +1,25 @@
 'use strict';
 
-// Phase 1 scaffolding only. Real exports are added as each feature phase
-// lands (see fiber-merchant-toolkit-plan.md, Sections 5-9). Nothing here
-// should be treated as final API surface yet.
+const { createInvoice, getInvoiceStatus, parseInvoiceResponse, RUSD_UDT_TYPE_SCRIPT } = require('./invoice');
+const { buildReceipt, renderReceiptPdf } = require('./receipt');
+const { exportCsv } = require('./settlement');
+const { toSmallestUnitHex, fromSmallestUnitHex } = require('./amount');
 
-module.exports = {};
+module.exports = {
+  // invoice.js
+  createInvoice,
+  getInvoiceStatus,
+  parseInvoiceResponse,
+  RUSD_UDT_TYPE_SCRIPT,
+
+  // receipt.js
+  buildReceipt,
+  renderReceiptPdf,
+
+  // settlement.js
+  exportCsv,
+
+  // amount.js
+  toSmallestUnitHex,
+  fromSmallestUnitHex,
+};

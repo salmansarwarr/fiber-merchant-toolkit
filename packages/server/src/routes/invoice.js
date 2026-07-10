@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const rateLimit = require('express-rate-limit');
+// const rateLimit = require('express-rate-limit');
 const { createInvoice } = require('@fiber-merchant-toolkit/core');
 
 const AMOUNT_PATTERN = /^\d+(\.\d{1,8})?$/;
@@ -28,15 +28,15 @@ function createInvoiceRouter(deps) {
 
   const router = express.Router();
 
-  const limiter = rateLimit({
-    windowMs: rateLimitWindowMs,
-    max: rateLimitMax,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: { error: 'Too many invoice requests — please try again later.' },
-  });
+  // const limiter = rateLimit({
+  //   windowMs: rateLimitWindowMs,
+  //   max: rateLimitMax,
+  //   standardHeaders: true,
+  //   legacyHeaders: false,
+  //   message: { error: 'Too many invoice requests — please try again later.' },
+  // });
 
-  router.post('/', limiter, async (req, res) => {
+  router.post('/', async (req, res) => {
     const { amount, description } = req.body || {};
 
     // --- input validation (reject before hitting the RPC) ---

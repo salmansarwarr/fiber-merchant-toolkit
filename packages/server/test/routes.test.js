@@ -1,7 +1,13 @@
 'use strict';
 
+
+
 const request = require('supertest');
 const { createApp } = require('../src/index');
+
+// ---------------------------------------------------------------------------
+// Helper: build a minimal mock RPC transport
+// ---------------------------------------------------------------------------
 
 function makeRpc(handlers = {}) {
   return {

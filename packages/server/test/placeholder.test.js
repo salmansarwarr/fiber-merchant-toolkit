@@ -3,6 +3,9 @@
 const request = require('supertest');
 const { createApp } = require('../src/index');
 
+// Phase 1: proves the server workspace's test runner and Express app
+// factory are wired up correctly before any real routes exist.
+
 test('placeholder: server workspace test runner is wired up', () => {
   expect(1 + 1).toBe(2);
 });
