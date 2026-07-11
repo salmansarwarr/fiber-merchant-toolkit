@@ -2,15 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fiber Merchant Toolkit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; color: #0f172a; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .tab-btn { padding: 0.5rem 1rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer; }
+    .tab-btn.active { background: #0f172a; color: #fff; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .hidden { display: none !important; }
+    label { display: block; margin-top: 0.75rem; font-size: 0.85rem; }
+    input { width: 100%; padding: 0.5rem; margin-top: 0.25rem; box-sizing: border-box; }
+    button[type="submit"] { margin-top: 1rem; padding: 0.5rem 1rem; }
+    .status-msg { margin-top: 0.75rem; font-size: 0.9rem; }
+    .status-error { color: #dc2626; }
+    .status-success { color: #16a34a; }
+    .status-info { color: #2563eb; }
+    .result-card, .poll-section { margin-top: 1rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; }
+    .result-card p, .poll-section p { margin: 0.35rem 0; word-break: break-all; }
+  </style>
 </head>
 <body>
-  <!--
-    Phase 1 scaffolding only. Real UI (invoice form, invoice display with
-    QR, receipt polling, date-range export) lands in Phase 7 (see
-    fiber-merchant-toolkit-plan.md, Section 10).
-  -->
   <h1>Fiber Merchant Toolkit</h1>
-  <p>Coming soon.</p>
+
+  <div class="tabs">
+    <button id="tab-invoice" class="tab-btn active" type="button">Create Invoice</button>
+    <button id="tab-export" class="tab-btn" type="button">Export CSV</button>
+  </div>
+
+  <div id="panel-invoice" class="panel active">
+    <form id="invoice-form">
+      <label for="inv-amount">Amount (RUSD)</label>
+      <input type="text" id="inv-amount" name="amount" required />
+
+      <label for="inv-description">Description (optional)</label>
+      <input type="text" id="inv-description" name="description" />
+
+      <button id="inv-submit" type="submit">Create Invoice</button>
+    </form>
+    <p id="inv-status" class="status-msg"></p>
+
+    <div id="inv-result" class="result-card hidden">
+      <h3>Invoice Created</h3>
+      <p>Address: <span id="res-address"></span></p>
+      <p>Payment Hash: <span id="res-hash"></span></p>
+      <p>Amount: <span id="res-amount"></span></p>
+      <p>Expires: <span id="res-expires"></span></p>
+      <div id="res-qr"></div>
+    </div>
+
+    <div id="poll-section" class="poll-section hidden">
+      <p>Payment Hash: <span id="poll-hash"></span></p>
+      <p id="poll-status" class="status-msg"></p>
+      <a id="poll-download" class="hidden" href="#">Download Receipt PDF</a>
+    </div>
+  </div>
+
+  <div id="panel-export" class="panel">
+    <form id="export-form">
+      <label for="exp-from">From</label>
+      <input type="date" id="exp-from" name="from" required />
+
+      <label for="exp-to">To</label>
+      <input type="date" id="exp-to" name="to" required />
+
+      <button id="exp-submit" type="submit">Export CSV</button>
+    </form>
+    <p id="exp-status" class="status-msg"></p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
