@@ -19,8 +19,71 @@
     .status-error { color: #dc2626; }
     .status-success { color: #16a34a; }
     .status-info { color: #2563eb; }
-    .result-card, .poll-section { margin-top: 1rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; }
-    .result-card p, .poll-section p { margin: 0.35rem 0; word-break: break-all; }
+
+    .result-card, .poll-section {
+      margin-top: 1rem;
+      padding: 1.25rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .result-card h3 { margin: 0 0 1rem; font-size: 1rem; }
+
+    .result-qr {
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .result-fields { display: flex; flex-direction: column; gap: 0.6rem; }
+    .result-field label {
+      margin: 0 0 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .result-value {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .result-value code {
+      flex: 1;
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      word-break: break-all;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.5rem 0.6rem;
+    }
+    .result-value.plain code {
+      background: none;
+      border: none;
+      padding: 0;
+      word-break: normal;
+      font-size: 0.9rem;
+    }
+    .copy-btn {
+      flex-shrink: 0;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #e2e8f0; }
+
+    .poll-section p { margin: 0.35rem 0; word-break: break-all; }
   </style>
 </head>
 <body>
@@ -45,11 +108,31 @@
 
     <div id="inv-result" class="result-card hidden">
       <h3>Invoice Created</h3>
-      <p>Address: <span id="res-address"></span></p>
-      <p>Payment Hash: <span id="res-hash"></span></p>
-      <p>Amount: <span id="res-amount"></span></p>
-      <p>Expires: <span id="res-expires"></span></p>
-      <div id="res-qr"></div>
+
+      <div class="result-fields">
+        <div class="result-field">
+          <label>Invoice Address</label>
+          <div class="result-value">
+            <code id="res-address"></code>
+            <button type="button" class="copy-btn" data-copy-target="res-address">Copy</button>
+          </div>
+        </div>
+        <div class="result-field">
+          <label>Payment Hash</label>
+          <div class="result-value">
+            <code id="res-hash"></code>
+            <button type="button" class="copy-btn" data-copy-target="res-hash">Copy</button>
+          </div>
+        </div>
+        <div class="result-field">
+          <label>Amount</label>
+          <div class="result-value plain"><code id="res-amount"></code></div>
+        </div>
+        <div class="result-field">
+          <label>Expires</label>
+          <div class="result-value plain"><code id="res-expires"></code></div>
+        </div>
+      </div>
     </div>
 
     <div id="poll-section" class="poll-section hidden">
