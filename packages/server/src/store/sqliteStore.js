@@ -69,7 +69,7 @@ class SqliteStore {
     return record;
   }
 
-  listByDateRange(from, to) {
+  listByDateRange({ from, to } = {}) {
     return this._rangeStmt.all(from, to).map(rowToRecord);
   }
 

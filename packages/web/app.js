@@ -218,6 +218,18 @@ function boot() {
   if (el('exp-to')) el('exp-to').value = today;
   if (el('exp-from')) el('exp-from').value = today;
 
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = el(btn.dataset.copyTarget);
+      if (!target) return;
+      navigator.clipboard.writeText(target.textContent).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      });
+    });
+  });
+
   showPanel('invoice');
 }
 
